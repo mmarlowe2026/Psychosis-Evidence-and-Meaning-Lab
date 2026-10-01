@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="PSY 210 Week 12 Psychosis Evidence and Meaning Lab"
+  >
+
+  <title>PSY 210 Psychosis Evidence and Meaning Lab</title>
+
+  <style>
+    :root {
+      --navy: #172b4d;
+      --indigo: #4d4b8b;
+      --violet: #7065a8;
+      --pale: #f0eff9;
+      --blue: #eaf3f8;
+      --gold: #d6a52a;
+      --ink: #202938;
+      --muted: #616c7b;
+      --line: #d7dce5;
+      --danger: #922b3e;
+      --success: #176b4d;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(#eeedf6, #f7f9fb 34rem);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.58;
+    }
+
+    .wrap {
+      width: min(1050px, calc(100% - 2rem));
+      margin: auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 3.2rem 1rem 4.8rem;
+      color: var(--white);
+      background:
+        linear-gradient(
+          130deg,
+          var(--navy),
+          #33476f 50%,
+          var(--indigo)
+        );
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -130px;
+      right: -80px;
+      width: 330px;
+      height: 330px;
+      border: 52px solid rgba(255, 255, 255, 0.07);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: #d9d5ff;
+      font-size: 0.84rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      margin: 0.3rem 0;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    .hero p:last-child {
+      max-width: 730px;
+      color: #eeedf7;
+      font-size: 1.1rem;
+    }
+
+    main {
+      position: relative;
+      margin-top: -2.3rem;
+    }
+
+    .notice,
+    .progress,
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(23, 43, 77, 0.12);
+    }
+
+    .notice {
+      padding: 1rem 1.15rem;
+      background: #fff9e9;
+      border-left: 6px solid var(--gold);
+      border-radius: 12px;
+    }
+
+    .notice p {
+      margin: 0;
+    }
+
+    .progress {
+      margin: 1rem 0;
+      padding: 1rem 1.15rem;
+      border-radius: 14px;
+    }
+
+    .progress-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .progress-track {
+      height: 10px;
+      margin-top: 0.65rem;
+      overflow: hidden;
+      background: #e8eaf0;
+      border-radius: 99px;
+    }
+
+    .progress-bar {
+      width: 20%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--indigo), #8c7ec5);
+      transition: width 0.2s ease;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.55rem;
+      margin: 1rem 0;
+    }
+
+    .tab,
+    .button {
+      border-radius: 9px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab {
+      padding: 0.75rem 0.4rem;
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid #b8c2cf;
+    }
+
+    .tab:hover {
+      background: var(--pale);
+      border-color: var(--indigo);
+    }
+
+    .tab.active {
+      color: var(--white);
+      background: var(--indigo);
+      border-color: var(--indigo);
+    }
+
+    .panel {
+      display: none;
+      margin-bottom: 1.5rem;
+      padding: clamp(1.2rem, 3vw, 2rem);
+      border-radius: 18px;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--indigo);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .panel h2 {
+      margin: 0.2rem 0 0.6rem;
+      color: var(--navy);
+      font-size: clamp(1.65rem, 3vw, 2.2rem);
+    }
+
+    .lead {
+      margin-top: 0;
+      color: var(--muted);
+    }
+
+    .case {
+      margin: 1rem 0;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, var(--pale), var(--blue));
+      border-left: 6px solid var(--indigo);
+      border-radius: 10px;
+    }
+
+    .case h3 {
+      margin: 0;
+      color: var(--navy);
+    }
+
+    .case p {
+      margin: 0.5rem 0;
+    }
+
+    .boundary {
+      padding: 0.9rem 1rem;
+      color: #63332c;
+      background: #fff2ef;
+      border: 1px solid #ecc7c0;
+      border-radius: 8px;
+    }
+
+    .domains {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin: 1rem 0;
+    }
+
+    .domain {
+      padding: 0.85rem;
+      background: #fafafd;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--indigo);
+      border-radius: 9px;
+    }
+
+    .domain strong {
+      display: block;
+      color: var(--navy);
+    }
+
+    .field {
+      display: block;
+      margin: 1.15rem 0;
+    }
+
+    .field-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .field-title {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .word-count,
+    .hint {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hint {
+      display: block;
+      margin: 0.25rem 0 0.45rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 125px;
+      padding: 0.85rem;
+      background: #fcfcfd;
+      border: 1px solid #9aa9b8;
+      border-radius: 8px;
+      font: inherit;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+
+    .button {
+      padding: 0.72rem 1rem;
+      color: var(--white);
+      background: var(--navy);
+      border: 0;
+    }
+
+    .button:hover {
+      background: var(--indigo);
+    }
+
+    .button.secondary {
+      color: var(--navy);
+      background: #e9edf2;
+    }
+
+    .button.danger {
+      background: var(--danger);
+    }
+
+    button:focus-visible,
+    textarea:focus {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .summary {
+      min-height: 420px;
+      padding: 1rem;
+      white-space: pre-wrap;
+      background: #f8f9fb;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-wrap: anywhere;
+    }
+
+    .status {
+      min-height: 1.5rem;
+      color: var(--success);
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 1rem 1rem 2.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .tabs {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tabs .tab:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .domains {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs .tab:last-child {
+        grid-column: auto;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .progress-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">
+        PSY 210 · Week 12 Clinical Reasoning Lab
+      </p>
+
+      <h1>Psychosis Evidence &amp; Meaning Lab</h1>
+
+      <p>
+        Describe experiences precisely, build the timeline, test
+        alternatives, and plan a respectful recovery-oriented response.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="notice">
+      <p>
+        <strong>Privacy boundary:</strong>
+        Use only the fictional Nia Thompson case. Personal mental-health,
+        substance-use, spiritual, cultural, or trauma disclosure is never
+        required. Responses remain in this browser.
+      </p>
+    </div>
+
+    <div class="progress">
+      <div class="progress-row">
+        <span id="stepText">Step 1 of 5</span>
+        <span id="doneText">0 of 11 prompts started</span>
+      </div>
+
+      <div class="progress-track">
+        <div
+          class="progress-bar"
+          id="progressBar"
+        ></div>
+      </div>
+    </div>
+
+    <nav
+      class="tabs"
+      aria-label="Lab steps"
+    >
+      <button
+        type="button"
+        class="tab active"
+        data-step="0"
+      >
+        1 · Case
+      </button>
+
+      <button
+        type="button"
+        class="tab"
+        data-step="1"
+      >
+        2 · Observe
+      </button>
+
+      <button
+        type="button"
+        class="tab"
+        data-step="2"
+      >
+        3 · Organize
+      </button>
+
+      <button
+        type="button"
+        class="tab"
+        data-step="3"
+      >
+        4 · Differentiate
+      </button>
+
+      <button
+        type="button"
+        class="tab"
+        data-step="4"
+      >
+        5 · Respond
+      </button>
+    </nav>
+
+    <!-- STEP 1 -->
+    <section class="panel active">
+      <p class="kicker">Step 1 · Encounter the Case</p>
+
+      <h2>Describe Before You Explain</h2>
+
+      <p class="lead">
+        Read for exact language, observable behavior, time course,
+        functioning, context, and uncertainty.
+      </p>
+
+      <div class="case">
+        <h3>Nia Thompson Week 12 Update</h3>
+
+        <p>
+          During a follow-up visit, Nia says that for the past three weeks
+          she has occasionally heard her name called when no one appears
+          to be nearby. She also reports feeling watched at work and says
+          two coworkers may be sending her coded messages through ordinary
+          comments. She is unsure whether this interpretation is correct
+          but has begun avoiding the break room.
+        </p>
+
+        <p>
+          Nia has slept about three to four hours per night for the past
+          week while working extra shifts. Her partner reports that Nia
+          sometimes changes topics quickly and seems harder to follow.
+          Nia used cannabis twice during the past month and recently
+          restarted a prescribed medication, but the type and timing are
+          not provided.
+        </p>
+
+        <p>
+          Nia remains oriented, arrives on time, expresses concern about
+          the changes, and agrees to discuss safety and medical evaluation.
+          She denies current intent to harm herself or anyone else. The
+          case does not establish duration beyond the details above, prior
+          episodes, mood-episode timing, intoxication or withdrawal,
+          medical symptoms, trauma cues, family history, cultural or
+          spiritual meaning, or decline across major areas of functioning.
+        </p>
+      </div>
+
+      <div class="boundary">
+        <strong>Professional boundary:</strong>
+        This fictional information raises important assessment priorities.
+        It does not establish schizophrenia, dangerousness, or any other
+        diagnosis.
+      </div>
+
+      <div class="domains">
+        <div class="domain">
+          <strong>Experience</strong>
+          What was perceived, believed, said, reported, or observed?
+        </div>
+
+        <div class="domain">
+          <strong>Course</strong>
+          When did it begin, how often does it occur, and what changed?
+        </div>
+
+        <div class="domain">
+          <strong>Meaning</strong>
+          How does Nia understand the experience, and what context matters?
+        </div>
+      </div>
+
+      <div class="actions">
+        <button
+          type="button"
+          class="button"
+          data-next="1"
+        >
+          Record the Evidence
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="panel">
+      <p class="kicker">Step 2 · Observe</p>
+
+      <h2>Separate Evidence From Interpretation</h2>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">Directly Supported Evidence</span>
+          <span
+            class="word-count"
+            id="factsCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Record exact reports, observable behavior, duration, functioning,
+          and stated safety information.
+        </span>
+
+        <textarea
+          id="facts"
+          placeholder="The case directly supports..."
+        ></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">
+            Interpretations and Assumptions to Avoid
+          </span>
+
+          <span
+            class="word-count"
+            id="assumptionsCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Identify conclusions the case cannot support about diagnosis,
+          dangerousness, credibility, culture, or intent.
+        </span>
+
+        <textarea
+          id="assumptions"
+          placeholder="The case does not establish..."
+        ></textarea>
+      </label>
+
+      <div class="actions">
+        <button
+          type="button"
+          class="button secondary"
+          data-back="0"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          class="button"
+          data-next="2"
+        >
+          Organize the Pattern
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="panel">
+      <p class="kicker">Step 3 · Organize</p>
+
+      <h2>Map Domains and Course</h2>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">
+            Possible Symptom and Function Domains
+          </span>
+
+          <span
+            class="word-count"
+            id="domainsCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Sort possible positive, negative, disorganized, cognitive, mood,
+          and functional evidence. Mark missing evidence.
+        </span>
+
+        <textarea id="domains"></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">Timeline and Baseline</span>
+
+          <span
+            class="word-count"
+            id="timelineCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Organize onset, duration, progression, sleep, mood, medication,
+          substance exposure, trauma cues, and return to baseline.
+        </span>
+
+        <textarea id="timeline"></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">
+            Culture, Spirituality, and Meaning
+          </span>
+
+          <span
+            class="word-count"
+            id="cultureCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          What must be explored about shared beliefs, community meanings,
+          identity, discrimination, stigma, and help-seeking without
+          stereotyping?
+        </span>
+
+        <textarea id="culture"></textarea>
+      </label>
+
+      <div class="actions">
+        <button
+          type="button"
+          class="button secondary"
+          data-back="1"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          class="button"
+          data-next="3"
+        >
+          Test Alternatives
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 4 -->
+    <section class="panel">
+      <p class="kicker">Step 4 · Differentiate</p>
+
+      <h2>Compare Explanatory Domains</h2>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">
+            Psychosis, Mood, and Trauma Alternatives
+          </span>
+
+          <span
+            class="word-count"
+            id="clinicalCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Identify evidence needed to compare psychosis-spectrum,
+          mood-related, trauma-related, dissociative, grief, and
+          sleep-related explanations.
+        </span>
+
+        <textarea id="clinical"></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">
+            Substance, Medication, and Medical Alternatives
+          </span>
+
+          <span
+            class="word-count"
+            id="medicalCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Identify timing and evidence needed regarding substances,
+          prescriptions, intoxication, withdrawal, neurological or medical
+          changes, and delirium.
+        </span>
+
+        <textarea id="medical"></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">
+            Safety and Immediate Functioning
+          </span>
+
+          <span
+            class="word-count"
+            id="safetyCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Assess current danger, command experiences, ability to meet basic
+          needs, severe agitation, victimization, exploitation, available
+          supports, and urgent medical needs without assuming dangerousness.
+        </span>
+
+        <textarea id="safety"></textarea>
+      </label>
+
+      <div class="actions">
+        <button
+          type="button"
+          class="button secondary"
+          data-back="2"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          class="button"
+          data-next="4"
+        >
+          Plan the Response
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 5 -->
+    <section class="panel">
+      <p class="kicker">Step 5 · Respond and Export</p>
+
+      <h2>Create a Recovery-Oriented Formulation</h2>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">
+            Respectful Assessment Questions
+          </span>
+
+          <span
+            class="word-count"
+            id="questionsCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Write neutral questions about experience, conviction, flexibility,
+          distress, function, meaning, safety, and preferences without
+          confrontation or endorsement.
+        </span>
+
+        <textarea id="questions"></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">Provisional Formulation</span>
+
+          <span
+            class="word-count"
+            id="formulationCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Integrate supported evidence, alternatives, strengths, safety,
+          and uncertainty without diagnosing.
+        </span>
+
+        <textarea id="formulation"></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-heading">
+          <span class="field-title">Recovery Map and Next Steps</span>
+
+          <span
+            class="word-count"
+            id="planCount"
+          >
+            0 words
+          </span>
+        </span>
+
+        <span class="hint">
+          Identify proportionate medical, psychological, social,
+          occupational, family or community, and follow-up supports while
+          preserving agency.
+        </span>
+
+        <textarea id="plan"></textarea>
+      </label>
+
+      <pre
+        class="summary"
+        id="summary"
+        tabindex="0"
+      ></pre>
+
+      <p
+        class="status"
+        id="status"
+        aria-live="polite"
+      ></p>
+
+      <div class="actions">
+        <button
+          type="button"
+          class="button secondary"
+          data-back="3"
+        >
+          Back
+        </button>
+
+        <button
+          type="button"
+          class="button"
+          id="copyButton"
+        >
+          Copy Summary
+        </button>
+
+        <button
+          type="button"
+          class="button"
+          id="downloadButton"
+        >
+          Download TXT
+        </button>
+
+        <button
+          type="button"
+          class="button danger"
+          id="resetButton"
+        >
+          Reset Lab
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    This educational lab supports clinical reasoning. It does not provide
+    diagnosis, assessment, or treatment advice.
+  </footer>
+
+  <script>
+    const storageKey =
+      "psy210-w12-psychosis-evidence-meaning-v1";
+
+    const fieldIds = [
+      "facts",
+      "assumptions",
+      "domains",
+      "timeline",
+      "culture",
+      "clinical",
+      "medical",
+      "safety",
+      "questions",
+      "formulation",
+      "plan"
+    ];
+
+    const blankState = Object.fromEntries(
+      fieldIds.map((fieldId) => [fieldId, ""])
+    );
+
+    let labState = loadState();
+    let currentStep = 0;
+
+    function loadState() {
+      try {
+        const savedState = JSON.parse(
+          localStorage.getItem(storageKey) || "{}"
+        );
+
+        return {
+          ...blankState,
+          ...savedState
+        };
+      } catch (error) {
+        return {
+          ...blankState
+        };
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(
+          storageKey,
+          JSON.stringify(labState)
+        );
+      } catch (error) {
+        document.getElementById("status").textContent =
+          "Your browser could not save the responses locally.";
+      }
+    }
+
+    function countWords(value) {
+      const trimmedValue = value.trim();
+
+      if (!trimmedValue) {
+        return 0;
+      }
+
+      return trimmedValue.split(/\s+/).length;
+    }
+
+    function refreshProgress() {
+      let completedFields = 0;
+
+      fieldIds.forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+        const count = countWords(field.value);
+        const countElement = document.getElementById(
+          `${fieldId}Count`
+        );
+
+        countElement.textContent =
+          `${count} ${count === 1 ? "word" : "words"}`;
+
+        if (field.value.trim()) {
+          completedFields += 1;
+        }
+      });
+
+      document.getElementById("doneText").textContent =
+        `${completedFields} of ${fieldIds.length} prompts started`;
+
+      if (currentStep === 4) {
+        buildSummary();
+      }
+    }
+
+    function showStep(stepNumber) {
+      currentStep = Math.max(
+        0,
+        Math.min(4, stepNumber)
+      );
+
+      document
+        .querySelectorAll(".panel")
+        .forEach((panel, index) => {
+          panel.classList.toggle(
+            "active",
+            index === currentStep
+          );
+        });
+
+      document
+        .querySelectorAll(".tab")
+        .forEach((tab, index) => {
+          tab.classList.toggle(
+            "active",
+            index === currentStep
+          );
+
+          if (index === currentStep) {
+            tab.setAttribute("aria-current", "step");
+          } else {
+            tab.removeAttribute("aria-current");
+          }
+        });
+
+      document.getElementById("stepText").textContent =
+        `Step ${currentStep + 1} of 5`;
+
+      document.getElementById("progressBar").style.width =
+        `${(currentStep + 1) * 20}%`;
+
+      refreshProgress();
+
+      window.scrollTo({
+        top:
+          document.querySelector("main").offsetTop - 10,
+        behavior: "smooth"
+      });
+    }
+
+    function displayValue(value) {
+      return value.trim() || "Not yet entered";
+    }
+
+    function buildSummary() {
+      const summary = `
+PSY 210 PSYCHOSIS EVIDENCE AND MEANING LAB
+CASE: Nia Thompson
+
+DIRECTLY SUPPORTED EVIDENCE
+${displayValue(labState.facts)}
+
+INTERPRETATIONS AND ASSUMPTIONS TO AVOID
+${displayValue(labState.assumptions)}
+
+POSSIBLE SYMPTOM AND FUNCTION DOMAINS
+${displayValue(labState.domains)}
+
+TIMELINE AND BASELINE
+${displayValue(labState.timeline)}
+
+CULTURE, SPIRITUALITY, AND MEANING
+${displayValue(labState.culture)}
+
+PSYCHOSIS, MOOD, AND TRAUMA ALTERNATIVES
+${displayValue(labState.clinical)}
+
+SUBSTANCE, MEDICATION, AND MEDICAL ALTERNATIVES
+${displayValue(labState.medical)}
+
+SAFETY AND IMMEDIATE FUNCTIONING
+${displayValue(labState.safety)}
+
+RESPECTFUL ASSESSMENT QUESTIONS
+${displayValue(labState.questions)}
+
+PROVISIONAL FORMULATION
+${displayValue(labState.formulation)}
+
+RECOVERY MAP AND NEXT STEPS
+${displayValue(labState.plan)}
+
+PROFESSIONAL BOUNDARY
+This analysis organizes provisional evidence, alternatives, context,
+strengths, safety, and missing information. It does not establish a
+diagnosis.
+      `.trim();
+
+      document.getElementById("summary").textContent =
+        summary;
+
+      return summary;
+    }
+
+    function connectFields() {
+      fieldIds.forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+
+        field.value = labState[fieldId] || "";
+
+        field.addEventListener("input", function () {
+          labState[fieldId] = this.value;
+          saveState();
+          refreshProgress();
+        });
+      });
+    }
+
+    async function copySummary() {
+      const status = document.getElementById("status");
+
+      try {
+        await navigator.clipboard.writeText(
+          buildSummary()
+        );
+
+        status.textContent =
+          "Your lab summary was copied.";
+      } catch (error) {
+        status.textContent =
+          "Copying was blocked. Select the summary and copy it manually.";
+      }
+    }
+
+    function downloadSummary() {
+      const file = new Blob(
+        [buildSummary()],
+        {
+          type: "text/plain"
+        }
+      );
+
+      const downloadLink =
+        document.createElement("a");
+
+      downloadLink.href =
+        URL.createObjectURL(file);
+
+      downloadLink.download =
+        "PSY210_Psychosis_Evidence_and_Meaning_Lab.txt";
+
+      downloadLink.click();
+
+      setTimeout(() => {
+        URL.revokeObjectURL(
+          downloadLink.href
+        );
+      }, 0);
+
+      document.getElementById("status").textContent =
+        "Your lab summary was downloaded.";
+    }
+
+    function resetLab() {
+      const confirmed = window.confirm(
+        "Erase all responses saved for this lab in this browser?"
+      );
+
+      if (!confirmed) {
+        return;
+      }
+
+      localStorage.removeItem(storageKey);
+      labState = {
+        ...blankState
+      };
+
+      location.reload();
+    }
+
+    document
+      .querySelectorAll(".tab")
+      .forEach((tab) => {
+        tab.addEventListener("click", function () {
+          showStep(
+            Number(this.dataset.step)
+          );
+        });
+      });
+
+    document
+      .querySelectorAll("[data-next]")
+      .forEach((button) => {
+        button.addEventListener("click", function () {
+          showStep(
+            Number(this.dataset.next)
+          );
+        });
+      });
+
+    document
+      .querySelectorAll("[data-back]")
+      .forEach((button) => {
+        button.addEventListener("click", function () {
+          showStep(
+            Number(this.dataset.back)
+          );
+        });
+      });
+
+    document
+      .getElementById("copyButton")
+      .addEventListener("click", copySummary);
+
+    document
+      .getElementById("downloadButton")
+      .addEventListener("click", downloadSummary);
+
+    document
+      .getElementById("resetButton")
+      .addEventListener("click", resetLab);
+
+    connectFields();
+    showStep(0);
+  </script>
+</body>
+</html>
